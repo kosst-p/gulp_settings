@@ -1,1 +1,1 @@
-удалить скрытый фаил .keepdir.txt
+delete all .keepdir.txt

@@ -100,7 +100,9 @@ gulp.task('watch', () =>{
     browserSync.init({
         server: {
             baseDir: "./"
-        }
+        },
+        browser: 'firefox',
+        notify: false
     });
     //Отслеживание за файлами в папке IMG файлами
     gulp.watch('./src/img/**', gulp.series('img-compress'))
