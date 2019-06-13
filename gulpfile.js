@@ -77,10 +77,16 @@ gulp.task('del', () => {
     return del(['build/*'])
 })
 
-//Такс на создание папки fonts
+//Таск на создание папки fonts
 gulp.task('fonts', () => {
     return gulp.src('./src/fonts/**')
         .pipe(gulp.dest('./build/fonts'))
+})
+
+//Таск на создание папки libs и перенос в неё всех файлов соответствнно
+gulp.task('libs', () => {
+    return gulp.src('./src/libs/**')
+        .pipe(gulp.dest('./build/libs'))
 })
 
 //Таск для обработки картинок
@@ -112,6 +118,8 @@ gulp.task('watch', () =>{
     gulp.watch('./src/js/**/*.js', gulp.series('scripts'))
     //Отслеживание за файлами в папке fonts
     gulp.watch('./src/fonts/**', gulp.series('fonts'))
+    //Отслеживание за файлами в папке libs
+    gulp.watch('./src/libs/**', gulp.series('libs'))
     //При изменении HTML запустить синхронизацию
     gulp.watch("./*.html").on('change', browserSync.reload);
 })
@@ -119,4 +127,4 @@ gulp.task('watch', () =>{
 
 
 //Общий таск. Запускает последовательно таск del и directories после этого в параллельном режиме запускаются такски styles, scripts и img-compres  и такс watch для слежения.
-gulp.task('default', gulp.series('del', gulp.parallel('styles', 'img-compress', 'fonts'), 'watch')); //при необходимости добавить 'scripts'
+gulp.task('default', gulp.series('del', gulp.parallel('styles', 'img-compress', 'fonts', 'libs'), 'watch')); //при необходимости добавить 'scripts'
