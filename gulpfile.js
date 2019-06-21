@@ -1,4 +1,4 @@
-//Подключаем Галпа
+//Подключаем Галп
 const gulp = require('gulp');
 //Объединение файлов
 const concat = require('gulp-concat');
@@ -44,7 +44,7 @@ gulp.task('styles', () => {
         //Добавить префиксы
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
-            cascade : false
+            cascade: false
         }))
         //Минификация CSS файла
         .pipe(cleanCSS({
@@ -82,13 +82,11 @@ gulp.task('fonts', () => {
     return gulp.src('./src/fonts/**')
         .pipe(gulp.dest('./build/fonts'))
 })
-
 //Таск на создание папки libs и перенос в неё всех файлов соответствнно
 gulp.task('libs', () => {
     return gulp.src('./src/libs/**')
         .pipe(gulp.dest('./build/libs'))
 })
-
 //Таск для обработки картинок
 gulp.task('img-compress', () => {
     //Шаблон для поиска файлов всех файлов в папке IMG
